@@ -5,6 +5,11 @@ import User_Backend.demo.db.UserDB;
 public class User {
     private String username;
     private String password;
+
+    public static UsersEntity getUser(String name) {
+        return UserDB.getUser(name);
+    }
+
     public String getUsername() {
         return username;
     }

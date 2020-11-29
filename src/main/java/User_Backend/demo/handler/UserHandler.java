@@ -1,6 +1,7 @@
 package User_Backend.demo.handler;
 
 import User_Backend.demo.bo.User;
+import User_Backend.demo.bo.UsersEntity;
 
 public class UserHandler {
 
@@ -15,5 +16,9 @@ public class UserHandler {
     public static boolean createUser(String userN, String passW){
         User.createUser(userN, passW);
         return true;
+    }
+
+    public static UsersEntity getUser(String name) {
+        return User.getUser(name);
     }
 }

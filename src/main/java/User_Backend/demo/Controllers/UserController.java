@@ -2,13 +2,12 @@
 package User_Backend.demo.Controllers;
 
 import User_Backend.demo.bo.User;
+import User_Backend.demo.bo.UsersEntity;
 import User_Backend.demo.handler.UserHandler;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -28,5 +27,11 @@ public class UserController {
             return ResponseEntity.ok(HttpStatus.OK);
         }
         return ResponseEntity.ok(HttpStatus.NOT_FOUND);
+    }
+    @CrossOrigin
+    @GetMapping("/getUser")
+    public ResponseEntity<UsersEntity> getUser(@RequestParam String name){
+        System.out.println("Finding user: " + name);
+        return ResponseEntity.ok(UserHandler.getUser(name));
     }
 }
